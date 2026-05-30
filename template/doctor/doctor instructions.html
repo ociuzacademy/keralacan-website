@@ -1,0 +1,64 @@
+{% extends 'doctor/dochead.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <title>web</title>
+    <style>
+        h2 {
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="course-selection">
+        <div class="container"><br>
+            <form action="/doc_instructions/" method="POST">
+                {% csrf_token %}
+
+                <h2>Instructions</h2><br>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Select patient:</label>
+                            <select class="form-control option" name="patientname">
+                                <option value="">Select patient</option>
+                                {% for x in pp %}
+                                <option value="{{x.patient_id.id}}">{{x.patient_id.name}}</option>
+                                {% endfor %}
+                            </select>
+
+                        </div>
+                        {% for x in pp %}
+                        <div class="form-group">
+                            <label>Type of cancer:</label>
+                            <input type="text" min="0" name="cancertype" value="{{x.cancertype}}" id="cancertype"
+                                class="form-control my-input">
+                        </div>
+                        {% endfor %}
+                        <div class="form-group">
+                            <label>Food style/diet:</label>
+                            <input type="text" min="0" name="diet" id="diet" class="form-control my-input">
+                        </div />
+                        <div class="form-group">
+                            <label>Exercise:</label>
+                            <input type="text" min="0" name="exercise" id="exercise" class="form-control my-input">
+                        </div>
+
+                        <br>
+                        <div>
+                            <input type="Submit" value="post" />
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+
+    </section>
+</body>
+
+</html>
+{% endblock %}

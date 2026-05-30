@@ -1,0 +1,88 @@
+{% extends 'patient/headfoot.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <title>web</title>
+    
+</head>
+<body>
+    <section class="course-selection">
+        <div class="dotts py-lg-5 py-3">
+            <div class="container">
+                <div class="row justify-content-between align-items-center">
+                    <div class="col-lg-6 course-left py-lg-5 py-3">
+                        <h3 class="course">
+                            Get Your Free
+                            <br> Health Treatment
+                        </h3>
+                        <p class="para my-4">
+                            Lorem ipsum dolor sit amet Neque porro quisquam est qui dolorem Lorem int ipsum dolor sit amet when an unknown printer took a galley of type.Vivamus id tempor felis. Cras sagittis mi sit amet..
+                        </p>
+                        <div class="row course-details-content">
+                            <div class="col course-detials-inner-info">
+
+                                <a href="#">
+                                    <h4>Easy appointments</h4>
+                                </a>
+                                <p>
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit sedc dnmo eiusmod.
+                                </p>
+                            </div>
+                            <div class="col course-detials-inner-info">
+
+                                <a href="#">
+                                    <h4>High Quality Service</h4>
+                                </a>
+                                <p>
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit sedc dnmo eiusmod.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 course-right">
+                        <form action="/appointment/" method="post">
+                            {% csrf_token %}
+                            {% for x in jj %}
+                            <h4 class="text-white text-center mb-3">Book Appointment</h4>
+                            <input type="text" class="form-control" name="name" value="{{x.name}}" placeholder="Your Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Name'">
+
+                            <input type="text" class="form-control" name="contact" value="{{x.contact}}" placeholder="Your Phone Number" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Phone Number'">
+
+                            <input type="email" class="form-control" name="email" value="{{x.email}}" placeholder="Your Email Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Email Address'">
+                           {% endfor %}
+
+                            <select class="form-control option" name="doctorname">
+                                <option>Select Doctor</option>
+
+                                {% for x in nn %}
+
+                                <option value="{{x.id}}">{{x.name}}----{{x.specialisation}}</option>
+
+                                {% endfor %}
+
+                               
+                            </select>
+                            
+                            <select class="form-control option" name="time">
+                                <option>Select Appointment</option>
+                                <option>9:00 a.m. - 11:00 a.m.</option>
+                                <option>9:00 p.m. - 12:00 p.m.</option>
+                                <option>10:00 p.m. - 1:00 p.m.</option>
+                                <option>02:00 m.m. - 4:00 p.m.</option>
+                                <option>04:00 m.m. - 8:00 p.m.</option>
+                            </select>
+
+                            <input class="form-control mt-3" type="submit" value="Book Appointment">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+               
+           
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'patient/headfoot.html' %}
+{% block content %}
+
+    <section class="course-selection">
+        <div class="dotts py-lg-5 py-3">
+            <div class="container">
+                   <section class="banner-bottom-w3layouts bg-light py-md-5 py-4">
+        <div class="container">
+            <div class="inner-sec-w3ls py-md-5 py-4">
+                <h3 class="tittle-wthree text-center mb-lg-5 mb-3">
+                    <span>Visit</span> </h3>
+                <div class="row choose-main ">
+                	{% for x in db %}
+                    <div class="col-lg-6">
+                        <div class="row">
+                            <div class="col-lg-6 galsses-grid-right">
+                                <h5>
+                                    <span class="post-color">{{x.name}}</span> {{x.email}}</h5>
+                                <h4 class="post my-3">Lorem ipsum dolor sit amet</h4>
+                                <p>{{x.story}}</p>
+                                <div class="read inner mt-4">
+                                   <!--  <a href="about.html" class="btn btn-sm animated-button victoria-two">Read More</a> -->
+                                </div>
+
+                            </div>
+                            <div class="col-lg-6 galsses-grid-right">
+                                <div class="galsses-grid-left">
+
+                                    <img src="{{x.image.url}}" alt="" class="img-fluid">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                   
+                </div>
+              
+
+            </div>
+        </div>
+    </section>
+                    </div>
+                    <div class="col-lg-6 course-right">
+</section>
+        
+
+    {% endblock %}

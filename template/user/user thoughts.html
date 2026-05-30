@@ -1,0 +1,55 @@
+{% extends 'user/headfoot.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <title>web</title>
+<style>
+    h2{
+        color:white;
+    }
+</style>
+</head>
+<body>
+
+    <section class="course-selection">
+        <div class="container"><br>
+            <form action="/user_story/" method="POST" enctype = "multipart/form-data">
+                {% csrf_token %}
+
+                {% for x in yy %}
+                <h2>Add your thoughts</h2><br>
+               <div class="row">
+                    <div class="col-md-6">
+                         <div class="form-group">
+                            <input type="file" name="imgg" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text"  name="name" class="form-control" placeholder="name" value="{{x.name}}">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Email id" name="email" value="{{x.email}}">
+                        </div>
+                        {% endfor %}
+                       
+                        <div class="form-group">
+                            <textarea name="story" class="form-control" placeholder="share whats'new*" style="width: 100%; height: 150px;"></textarea>
+                        </div>
+                        <br>
+
+                        
+                       <div>
+                            <input type="Submit" value="Share"/> 
+                        </div>
+                    </div>
+                   
+                    </div>
+                </form>
+                </div>
+        
+    </section>
+</body>
+</html>
+
+{% endblock %}

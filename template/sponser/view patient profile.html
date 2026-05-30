@@ -1,0 +1,45 @@
+{% extends 'sponser/headyfoot.html' %}
+{% block content %}
+
+
+    <section class="banner-bottom-w3layouts bg-light py-md-5 py-4">
+        <div class="container">
+            <div class="inner-sec-w3ls py-md-5 py-4">
+                <h3 class="tittle-wthree text-center mb-lg-5 mb-3">
+                    <span></span>Patient List </h3>
+                <div class="row choose-main ">
+                	{% for x in tt %}
+
+                    <div class="col-lg-6">
+                        <div class="row">
+                            <div class="col-lg-6 galsses-grid-right">
+                                <h5>
+                                    <span class="post-color">{{x.name}}</span> Age:{{x.age}}</h5>
+                                <h4 class="post my-3">{{x.contact}}</h4>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit .. </p>
+                                <div class="read inner mt-4">
+                            <!--         <a href="about.html" class="btn btn-sm animated-button victoria-two">Read More</a> -->
+                                </div>
+
+                            </div>
+                            <div class="col-lg-6 galsses-grid-right">
+                                <div class="galsses-grid-left">
+
+                                    <img src="/static/images/user.jpg" alt="" class="img-fluid">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}  
+                </div>
+            
+
+            </div>
+        </div>
+    </section>
+
+
+        
+
+    {% endblock %}

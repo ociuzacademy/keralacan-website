@@ -1,0 +1,91 @@
+{% extends "patient/headfoot.html" %}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Doctor Instructions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        table {
+            width: 90%;
+            margin: 30px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th,
+        td {
+            padding: 12px 15px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+
+        th {
+            background-color: #0b7dda;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        p.no-data {
+            text-align: center;
+            font-size: 18px;
+            color: #888;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2 style="text-align: center; margin-top: 30px;">Doctor's Instructions</h2>
+
+    {% if instructions %}
+    <table>
+        <thead>
+            <tr>
+                <th>Patient Name</th>
+                <th>Doctor Name</th>
+                <th>Cancer Type</th>
+                <th>Diet</th>
+                <th>Exercise</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in instructions %}
+            <tr>
+                <td style="color: black;">{{ i.patient_id.name }}</td>
+                <td style="color: black;">{{ i.doctor_id.name }}</td>
+                <td style="color: black;">{{ i.cancertype }}</td>
+                <td style="color: black;">{{ i.diet }}</td>
+                <td style="color: black;">{{ i.exercise }}</td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+    {% else %}
+    <p class="no-data" style="color: black;">No instructions found.</p>
+    {% endif %}
+
+</body>
+
+</html>
+{% endblock content %}

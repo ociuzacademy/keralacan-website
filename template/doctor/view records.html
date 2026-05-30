@@ -1,0 +1,138 @@
+{% extends 'doctor/dochead.html' %}
+{% block content %}
+
+
+<section class="w3l-clients py-5" id="clients">
+    <div class="call-w3 py-lg-5 py-md-4">
+        <div class="container">
+   <style type="text/css">
+		#customers {
+		  font-family: Arial, Helvetica, sans-serif;
+		  border-collapse: collapse;
+		  width: 80%;
+		  margin-left: auto;
+    	  margin-right: auto;
+    	  margin-bottom: 100px;
+    	  margin-top: 	auto;
+    	  border: 10px;
+		}
+
+		#customers td, #customers th {
+		  border: 1px solid #ddd;
+		  padding: 8px;
+		}
+
+		#customers tr:nth-child(even){background-color: #f2f2f2;color: black;}
+
+		#customers tr:nth-child(odd){background-color: #ddd;color: black;}
+
+		#customers th {
+		  padding-top: 12px;
+		  padding-bottom: 12px;
+		  text-align: left;
+		  background-color: #4CAF50;
+		  color: white;
+		}
+
+	</style>
+
+    <section class="course-selection">
+        <div class="dotts py-lg-5 py-3">
+            <div class="container">
+            	<div class="col-lg-4 course-right">
+                       <form action="/view_rec/" method="post">
+                            {% csrf_token %}
+                         
+
+                            <select class="form-control option" name="name">
+                                <option>Select patient</option>
+
+                                {% for x in nn %}
+
+                                <option value="{{x.patient_id.id}}">{{x.patient_id.name}}</option>
+
+                                {% endfor %}
+
+                               
+                            </select>
+                            <input class="form-control mt-3" type="submit" value="Search Record">
+                        </form>
+                    </div>
+                    <center>
+                <div class="row justify-content-between align-items-center">
+
+                    <div class="col-lg-6 course-left py-lg-5 py-3">
+                       	<table id="customers" cellpadding="0" cellspacing="0" border="10">
+		<thead>		
+		<tr>
+		<th> Name</th>
+		<th> Contact</th>
+		<th> Disease</th>
+		<th> Symptoms</th>
+		<th> Medicine</th>
+		<th> Gender</th>
+
+
+	<!-- 	<th colspan="2">status:</th> -->
+
+	</tr>
+                </thead>
+                <tbody>
+{% for x in aa %}
+
+	<tr>
+
+		<td>{{x.name}}</td>
+		<td>{{x.contact}}</td>
+		<td>{{x.disease}}</td>
+		<td>{{x.symptoms}}</td>
+		<td>{{x.medicine}}</td>
+		<td>{{x.gender}}</td>
+	<!-- 	<td><a href="/approve/?id={{x.id}}">approve</a></td>
+		<td><a href="/reject/?id={{x.id}}">reject</a></td> -->
+		
+	</tr>
+
+		{% endfor %}
+            </tbody>
+	
+
+	</table>
+                        </div>
+                    </div></center>
+                   
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+</div></div></section>
+
+
+
+    {% if error %}
+<script type="text/javascript">
+  swal("Error!", "{{error}}", "error");
+</script>
+{% endif %}
+
+{% if success %}
+<script type="text/javascript">
+  swal("Congrats!", "{{success}}", "success");
+</script>
+{% endif %}
+
+{% if info %}
+<script type="text/javascript">
+  swal("Information!", "{{info}}", "info");
+</script>
+{% endif %}
+
+
+
+
+
+{% endblock %}
+
+

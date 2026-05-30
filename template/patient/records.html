@@ -1,0 +1,71 @@
+{% extends 'patient/headfoot.html' %}
+{% block content %}
+
+    <section class="course-selection">
+        <div class="dotts py-lg-5 py-3">
+            <div class="container">
+                <div class="row justify-content-between align-items-center">
+                    <div  class="col-lg-6 course-right">
+                        <h3 class="course">
+                            Get Your Free
+                            <br> Health Treatment
+                        </h3>
+                    <form action="/records/" method="post">
+               	{% csrf_token %}
+               	{% for x in mm %}
+                  <div class="form-group">
+                  	<label> Name:</label>
+                     <input type="text" name="name"  class="form-control my-input" id="name" value="{{x.name}}">
+                  </div>
+                  <div class="form-group">
+                  	<label>Contact:</label>
+                     <input type="number" min="0" name="contact" id="contact" class="form-control my-input" value="{{x.contact}}">
+                  </div>
+                  {% endfor %}
+
+                  <div class="form-group">
+			  				<label>Check the conditions that apply to you:</label><br>
+			  				<input type="checkbox" name="disease" value="asthma" /> Asthma <br>  
+							<input type="checkbox" name="disease" value="cancer"/> Cancer <br>  
+							<input type="checkbox" name="disease" value="hypertension"/> Hypertension  <br>
+							<input type="checkbox" name="disease" value="others"/> Others
+							<br>
+					    	
+				  		</div>
+
+				  		<div class="form-group">
+			  				<label>Check the symptoms:</label><br>
+			  				<input type="checkbox" name="symptoms" value="chest pain" />Chest pain <br>  
+							<input type="checkbox" name="symptoms" value="fatigue"/> Fatigue <br>  
+							<input type="checkbox" name="symptoms" value="weight loss"/> Weight loss  <br>
+							<input type="checkbox" name="symptoms" value="chronic headache"/> Chronic headache<br>
+							<input type="checkbox" name="symptoms" value="weight gain"/> Weight gain<br>
+<br>
+				  		<div class="form-group">
+			  				<label>Are you currently taking any medication:</label><br>
+			  				<input type="radio" name="medicine" value="yes" /> Yes <br>  
+							<input type="radio" name="medicine" value="no"/> No <br>  
+					    	
+				  		</div>
+
+					<div class="form-group">
+			  				<label>Gender:</label><br>
+			  				<input type="radio" name="gender" value="male" /> Male <br>  
+							<input type="radio" name="gender" value="female"/> Female <br>  
+							<input type="radio" name="gender" value="other"/> Other  
+							<br>
+					    	
+				  		</div>
+				  				  			
+				
+						</div>
+			  			
+				
+                            <input class="form-control mt-3" type="submit" value="submit">
+                        </form>
+                    </div>
+                    <div class="col-lg-6 course-right">
+</section>
+		
+
+	{% endblock %}

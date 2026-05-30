@@ -1,0 +1,73 @@
+{% extends 'admin/head foot.html' %}
+{% block content %}
+
+
+<section class="w3l-clients py-5" id="clients">
+    <div class="call-w3 py-lg-5 py-md-4">
+        <div class="container">
+   <style type="text/css">
+		#customers {
+		  font-family: Arial, Helvetica, sans-serif;
+		  border-collapse: collapse;
+		  width: 80%;
+		  margin-left: auto;
+    	  margin-right: auto;
+    	  margin-bottom: 100px;
+    	  margin-top: 	auto;
+    	  border: 10px;
+		}
+
+		#customers td, #customers th {
+		  border: 1px solid #ddd;
+		  padding: 8px;
+		}
+
+		#customers tr:nth-child(even){background-color: #f2f2f2;color: black;}
+
+		#customers tr:nth-child(odd){background-color: #ddd;color: black;}
+
+		#customers th {
+		  padding-top: 12px;
+		  padding-bottom: 12px;
+		  text-align: left;
+		  background-color: #4CAF50;
+		  color: white;
+		}
+
+	</style>
+
+
+	<table id="customers" cellpadding="0" cellspacing="0" border="10">
+		<thead>		
+		<tr>
+    		<th>sponsers Name</th>
+		<th> Email</th>
+		<th> Address</th>
+		<th> Contact</th>
+		<th colspan="2">adminstatus:</th>
+
+                </tr>
+                </thead>
+                <tbody>
+
+	{% for x in dd %}
+
+	<tr>
+
+		<td>{{x.name}}</td>
+		<td>{{x.email}}</td>
+		<td>{{x.address}}</td>
+		<td>{{x.contact}}</td>
+		<td><a href="/approved/?id={{x.id}}">approve</a></td>
+		<td><a href="/rejected/?id={{x.id}}">reject</a></td>
+	</tr>
+
+		{% endfor %}
+            </tbody>
+	
+
+	</table>
+</div></div></section>
+
+
+{% endblock %}
