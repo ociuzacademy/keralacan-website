@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}CancerCare AI{% endblock %}</title>
+  <style>
+    :root{--navy:#17324d;--teal:#087f8c;--bg:#f4f7fa;--border:#dce5ed;--muted:#536578}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);font:16px/1.55 Arial,sans-serif;color:#1c2c3a}
+    header{background:var(--navy);color:#fff;padding:16px max(20px,calc((100% - 1000px)/2));display:flex;gap:20px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+    header a{color:#fff;text-decoration:none;font-weight:600;margin-right:12px}.brand{font-size:20px}
+    main{max-width:1000px;margin:28px auto;padding:0 18px}.card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:24px;margin-bottom:18px;box-shadow:0 3px 14px #193a520a}
+    h1,h2{color:var(--navy);line-height:1.25}h1{font-size:28px;margin-top:0}h2{font-size:20px}p{color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+    .tile{border:1px solid var(--border);border-radius:10px;padding:16px;background:#fff}.btn{display:inline-block;background:var(--teal);color:#fff!important;padding:10px 16px;border-radius:8px;text-decoration:none;border:0;font-weight:700;cursor:pointer}.btn.secondary{background:#e8f1f5;color:var(--navy)!important}
+    label{display:block;font-weight:700;margin:12px 0 5px}input[type=file],select{width:100%;padding:11px;border:1px solid #bdcad6;border-radius:7px;background:white}input[type=checkbox]{margin-right:8px}.errorlist,.error{color:#a52020}.notice{padding:14px;border-radius:8px;background:#fff5db;border:1px solid #e8d49b;color:#654e16}.success{background:#eaf8f1;border:1px solid #b4e2ca;padding:14px;border-radius:8px}.meta{font-size:13px;color:#5e6f7e}table{border-collapse:collapse;width:100%}th,td{text-align:left;padding:10px;border-bottom:1px solid var(--border)}
+  </style>
+</head>
+<body>
+<header><a class="brand" href="{% url 'prediction:home' %}">CancerCare · AI Lab</a><nav><a href="{% url 'prediction:home' %}">Overview</a><a href="{% url 'prediction:upload' %}">New prediction</a><a href="{% url 'prediction:history' %}">My history</a><a href="{% url 'pnt_home' %}">CancerCare home</a></nav></header>
+<main>{% if messages %}{% for message in messages %}<div class="notice">{{ message }}</div>{% endfor %}{% endif %}{% block content %}{% endblock %}</main>
+</body></html>

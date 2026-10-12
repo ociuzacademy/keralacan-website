@@ -12,3 +12,4 @@ media/
 staticfiles/
 VENV/
 ENV/
+private_prediction_uploads/

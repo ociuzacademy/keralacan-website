@@ -1,39 +1,250 @@
 {% extends 'patient/headfoot.html' %}
+
 {% block content %}
-<!DOCTYPE html>
-<html lang="zxx">
 
-<head>
-    <title>web</title>
-    
-</head>
-<body>
-	<div id="example5" class="slider-pro">
-        <div class="sp-slides">
-           <div class="sp-slide">
-                <img class="sp-image" src="/static/images/blank.gif" data-src="/static/images/banner2.jpg" alt=" " data-retina="/static/images/banner2.jpg" />
+<style>
+    .ai-prediction-section {
+        padding: 45px 20px;
+        background: #f4f9fb;
+    }
+
+    .ai-prediction-card {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 35px;
+        border-radius: 18px;
+        background: #ffffff;
+        box-shadow: 0 8px 30px rgba(0, 45, 60, 0.09);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 30px;
+        border: 1px solid #e3eff2;
+    }
+
+    .ai-content {
+        flex: 1;
+    }
+
+    .ai-badge {
+        display: inline-block;
+        padding: 7px 13px;
+        background: #e5f6f7;
+        color: #087f8c;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        margin-bottom: 15px;
+    }
+
+    .ai-content h2 {
+        color: #172f3b;
+        font-size: 30px;
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+
+    .ai-content p {
+        color: #667781;
+        font-size: 15px;
+        line-height: 1.8;
+        margin-bottom: 20px;
+    }
+
+    .ai-features {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 25px;
+    }
+
+    .ai-feature {
+        font-size: 13px;
+        color: #36515c;
+        background: #f1f7f8;
+        padding: 9px 12px;
+        border-radius: 7px;
+    }
+
+    .ai-prediction-btn {
+        display: inline-block;
+        background: #087f8c;
+        color: #ffffff !important;
+        text-decoration: none !important;
+        padding: 14px 25px;
+        border-radius: 7px;
+        font-size: 15px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .ai-prediction-btn:hover {
+        background: #05636e;
+        color: #ffffff !important;
+        transform: translateY(-2px);
+    }
+
+    .ai-icon-area {
+        width: 210px;
+        min-width: 180px;
+        height: 210px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #e2f7f7, #eef2ff);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #087f8c;
+        font-size: 75px;
+    }
+
+    .ai-disclaimer {
+        font-size: 12px !important;
+        color: #7b858c !important;
+        margin-top: 16px;
+        margin-bottom: 0 !important;
+    }
+
+    /* Existing banner */
+    .cancer-banner {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .cancer-banner img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    @media (max-width: 768px) {
+        .ai-prediction-section {
+            padding: 25px 14px;
+        }
+
+        .ai-prediction-card {
+            padding: 25px 20px;
+            flex-direction: column-reverse;
+            text-align: center;
+            gap: 20px;
+        }
+
+        .ai-icon-area {
+            width: 125px;
+            min-width: 125px;
+            height: 125px;
+            font-size: 48px;
+        }
+
+        .ai-content h2 {
+            font-size: 24px;
+        }
+
+        .ai-features {
+            justify-content: center;
+        }
+
+        .ai-prediction-btn {
+            width: 100%;
+            box-sizing: border-box;
+        }
+    }
+</style>
+
+<!-- AI CANCER PREDICTION CARD -->
+<section class="ai-prediction-section">
+    <div class="ai-prediction-card">
+
+        <div class="ai-content">
+
+            <span class="ai-badge">
+                AI-ASSISTED RESEARCH
+            </span>
+
+            <h2>Explore AI Cancer Prediction</h2>
+
+            <p>
+                Explore an experimental AI-powered image classification
+                tool designed to analyse supported medical images and
+                display model-generated predictions.
+            </p>
+
+            <div class="ai-features">
+                <span class="ai-feature">
+                    Image-Based Analysis
+                </span>
+
+                <span class="ai-feature">
+                    AI-Assisted Classification
+                </span>
+
+                <span class="ai-feature">
+                    Prediction Results
+                </span>
+            </div>
+
+            <a href="/prediction/" class="ai-prediction-btn">
+                Explore Prediction &rarr;
+            </a>
+
+            <p class="ai-disclaimer">
+                Experimental research only. Results are not a medical
+                diagnosis and must not replace professional medical advice.
+            </p>
+
+        </div>
+
+        <div class="ai-icon-area">
+            <i class="fa fa-heartbeat" aria-hidden="true"></i>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- EXISTING CANCER CARE BANNER -->
+<div id="example5" class="slider-pro cancer-banner">
+
+    <div class="sp-slides">
+
+        <div class="sp-slide">
+
+            <img
+                class="sp-image"
+                src="/static/images/blank.gif"
+                data-src="/static/images/banner2.jpg"
+                data-retina="/static/images/banner2.jpg"
+                alt="Cancer care and medical support"
+            />
+
+        </div>
+
+    </div>
+
 </div>
-</div>
-</div>
-               
-           
-</body>
-</html>
-    {% if error %}
-<script type="text/javascript">
-  swal("Error!", "{{error}}", "error");
+
+
+<!-- ERROR MESSAGE -->
+{% if error %}
+<script>
+    swal("Error!", "{{ error|escapejs }}", "error");
 </script>
 {% endif %}
 
+
+<!-- SUCCESS MESSAGE -->
 {% if success %}
-<script type="text/javascript">
-  swal("Congrats!", "{{success}}", "success");
+<script>
+    swal("Congrats!", "{{ success|escapejs }}", "success");
 </script>
 {% endif %}
 
+
+<!-- INFORMATION MESSAGE -->
 {% if info %}
-<script type="text/javascript">
-  swal("Information!", "{{info}}", "info");
+<script>
+    swal("Information!", "{{ info|escapejs }}", "info");
 </script>
 {% endif %}
+
 {% endblock %}

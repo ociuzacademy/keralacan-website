@@ -1,0 +1,8 @@
+{% extends 'prediction/base.html' %}{% block title %}Upload image{% endblock %}{% block content %}
+<div class="card"><h1>Submit an image</h1><p>Use only an image type appropriate to the selected model (for example, brain MRI for the brain model). This research prototype may give incorrect results.</p>
+<form method="post" enctype="multipart/form-data">{% csrf_token %}{{ form.non_field_errors }}
+<div><label for="id_cancer_type">Model / image type</label>{{ form.cancer_type }}{{ form.cancer_type.errors }}</div>
+<div><label for="id_image">Image (JPEG, PNG or WEBP; maximum 8 MB)</label>{{ form.image }}{{ form.image.errors }}</div>
+<div style="margin:18px 0">{{ form.disclaimer_acknowledged }} <label for="id_disclaimer_acknowledged" style="display:inline">{{ form.disclaimer_acknowledged.label }}</label>{{ form.disclaimer_acknowledged.errors }}</div>
+<button class="btn" type="submit">Run experimental model</button></form></div>
+<div class="card"><h2>Before uploading</h2><ul><li>Use a valid image matching the model's intended modality.</li><li>Do not use this result as a medical diagnosis or treatment recommendation.</li><li>Your upload and result are associated with your patient account.</li></ul></div>{% endblock %}

@@ -1,0 +1,11 @@
+# Install alongside requirements.txt in the same virtual environment.
+# Use a Python release supported by TensorFlow 2.20.0.
+tensorflow==2.20.0
+numpy>=1.26,<2.2
+Pillow>=12.0
+asgiref==3.11.1
+Django==5.2
+mysqlclient==2.2.8
+pillow==12.2.0
+sqlparse==0.5.5
+tzdata==2026.2
